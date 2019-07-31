@@ -26,3 +26,6 @@ oscon_feed = {"Schedule":
               }
 
 dict_with_keyword = {'class': '2007', 'school': 'cbtis47'}
+
+nested_dict = {'main_data': {'simple_data': 'simple_key',
+                             'simple_key': 'simple_value_2'}}

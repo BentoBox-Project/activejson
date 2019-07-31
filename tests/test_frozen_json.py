@@ -1,7 +1,7 @@
 import pytest
 
 from activejson import FrozenJSON
-from .example_dicts import oscon_feed, dict_with_keyword
+from .example_dicts import oscon_feed, dict_with_keyword, nested_dict
 
 
 @pytest.fixture
@@ -12,6 +12,11 @@ def frozen_oscon_feed():
 @pytest.fixture
 def frozen_dict_with_keywords():
     return FrozenJSON(dict_with_keyword)
+
+
+@pytest.fixture
+def frozen_nested_data():
+    return FrozenJSON(nested_dict)
 
 
 def test_has_keys(frozen_oscon_feed):
@@ -34,3 +39,8 @@ def test_contains_funcionality(frozen_oscon_feed):
 
 def test_getitem_getattr(frozen_oscon_feed):
     assert frozen_oscon_feed.Schedule.keys() == frozen_oscon_feed['Schedule'].keys()
+
+
+def test_remove_nested_data(frozen_nested_data):
+    frozen_nested_data.get('main_data').pop('simple_key')
+    assert 'simple_key' not in frozen_nested_data.get('main_data')
