@@ -31,6 +31,7 @@ def test_keyword_handling(frozen_dict_with_keywords):
 def test_raises_exception(frozen_oscon_feed):
     with pytest.raises(AttributeError):
         value = frozen_oscon_feed.city
+        assert value is None
 
 
 def test_contains_funcionality(frozen_oscon_feed):
@@ -38,7 +39,8 @@ def test_contains_funcionality(frozen_oscon_feed):
 
 
 def test_getitem_getattr(frozen_oscon_feed):
-    assert frozen_oscon_feed.Schedule.keys() == frozen_oscon_feed['Schedule'].keys()
+    oscon_keys = frozen_oscon_feed['Schedule'].keys()
+    assert frozen_oscon_feed.Schedule.keys() == oscon_keys
 
 
 def test_remove_nested_data(frozen_nested_data):

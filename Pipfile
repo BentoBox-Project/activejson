@@ -5,6 +5,8 @@ verify_ssl = true
 
 [dev-packages]
 pytest = "==4.3.0"
+flake8 = "*"
+pytest-cov = "*"
 
 [packages]
 

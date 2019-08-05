@@ -1,0 +1,28 @@
+# Python CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-python/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # specify the version you desire here
+      - image: circleci/python:3.7.3
+
+    working_directory: ~/repo
+
+    steps:
+      # Step 1: obtain repo from GitHub
+      - checkout
+      # Step 2: create virtual env and install dependencies
+      - run:
+          name: install dependencies
+          command: |
+            sudo pip install pipenv
+            pipenv install --dev
+      # Step 3: run linter and tests
+      - run:
+          name: run tests
+          command: |
+            pipenv run flake8 --exclude=build --exclude=venv* --statistics
+            pipenv run pytest tests/ -v --cov
