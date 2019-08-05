@@ -1,7 +1,9 @@
 # Activejson
-> A convenient library to deal with large json data
 
 [![PyPI version](https://badge.fury.io/py/activejson.svg)](https://badge.fury.io/py/activejson)
+[![CircleCI](https://circleci.com/gh/dany2691/activejson.svg?style=svg)](https://circleci.com/gh/dany2691/activejson)
+
+> A convenient library to deal with large json data
 
 A convenient library to deal with large json data. The purpose of this package is help to deal with complex json-like data, converting them into a more manageable data structure.
 
