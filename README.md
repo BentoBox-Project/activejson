@@ -79,6 +79,23 @@ The result could be the next:
 'canine'
 ```
 
+To retrieve the underlying json, is possible to use the json property:
+
+```python
+frozen_complex_json.json
+```
+
+```sh
+{'cat_grass': 'feline',
+ 'cat_horse': 'my joke',
+ 'cat_mud': 'you never know',
+ 'dog': 'canine',
+ 'dolphin_0_tiger_0_bird': 'blue jay',
+ 'dolphin_0_tiger_1_fish': 'dolphin',
+ 'dolphin_1_cat2': 'feline',
+ 'dolphin_2_dog2': 'canine'}
+```
+
 # Development setup
 
 This project uses _pipenv_ for dependecy resolution. It's a kind of mix between
