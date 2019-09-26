@@ -22,7 +22,7 @@ def _process_dict_values(parent_key, key, value):
 
 
 def _proccess_list(parent_key, i, value):
-    temp2 = parent_key + '_'+str(i)
+    temp2 = parent_key + '_' + str(i)
     return temp2, value
 
 

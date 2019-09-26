@@ -4,6 +4,8 @@ import keyword
 
 class FrozenJSON:
 
+    frozen_keywords = ["json"]
+
     def __new__(cls, arg):
         if isinstance(arg, abc.Mapping):
             return super().__new__(cls)
@@ -15,9 +17,13 @@ class FrozenJSON:
     def __init__(self, mapping):
         self.__data = {}
         for key, value in mapping.items():
-            if keyword.iskeyword(key):
+            if keyword.iskeyword(key) or key in self.frozen_keywords:
                 key += '_'
             self.__data[key] = value
+
+    @property
+    def json(self):
+        return self.__data
 
     def __contains__(self, key):
         return key in self.__data
