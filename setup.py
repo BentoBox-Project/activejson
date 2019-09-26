@@ -1,11 +1,28 @@
+from os import environ as env
 from setuptools import find_packages, setup
+from setuptools.command.install import install
+import sys
+
+VERSION = '0.2.2'
 
 with open('README.md', 'r', encoding='utf-8') as fh:
     long_description = fh.read()
 
+
+class VerifyVersionCommand(install):
+    """Custom command to verify that the git tag matches our version"""
+    description = "verify that the git matches this version"
+
+    def run(self):
+        tag = env.get("ACTIVEJSON_TAG")
+        if tag != VERSION:
+            info = f"Git tag: {tag} doesn't match this version {VERSION}"
+            sys.exit(info)
+
+
 setup(
     name='activejson',
-    version='0.2.2',
+    version=VERSION,
     description='A convenient library to deal with large json data',
     long_description=long_description,
     long_description_content_type='text/markdown',
@@ -24,5 +41,6 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy'
-    ]
+    ],
+    cmdclass={"verify": VerifyVersionCommand}
 )
