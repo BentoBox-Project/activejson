@@ -14,14 +14,14 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            sudo pip install pipenv
-            pipenv install --dev
+            sudo pip install poetry
+            poetry install
 
       - run:
           name: run tests
           command: |
-            pipenv run flake8 --exclude=build --exclude=venv* --statistics -v
-            pipenv run pytest tests/ -v --cov
+            poetry run flake8 --exclude=build --exclude=venv* --statistics -v
+            poetry run pytest tests/ -v --cov
 
   deploy_test:
     docker:
