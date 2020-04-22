@@ -5,8 +5,7 @@ def flatten_json(dictionary):
     """Flatten a nested json file"""
 
     while True:
-        dictionary = dict(chain.from_iterable(starmap(_unpack,
-                                                      dictionary.items())))
+        dictionary = dict(chain.from_iterable(starmap(_unpack, dictionary.items())))
         if _atomic_values(dictionary):
             break
     return dictionary
@@ -17,12 +16,12 @@ def _atomic_values(dictionary):
 
 
 def _process_dict_values(parent_key, key, value):
-    temp1 = parent_key + '_' + key
+    temp1 = parent_key + "_" + key
     return temp1, value
 
 
 def _proccess_list(parent_key, i, value):
-    temp2 = parent_key + '_' + str(i)
+    temp2 = parent_key + "_" + str(i)
     return temp2, value
 
 
