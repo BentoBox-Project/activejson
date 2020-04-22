@@ -1,7 +1,7 @@
 import pytest
 
 from activejson import FrozenJSON
-from .example_dicts import oscon_feed, dict_with_keywords, nested_dict
+from .example_dicts import dict_with_keywords, nested_dict, oscon_feed
 
 
 @pytest.fixture
