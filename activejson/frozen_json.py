@@ -18,7 +18,7 @@ class FrozenJSON:
         self.__data = {}
         for key, value in mapping.items():
             if keyword.iskeyword(key) or key in self.frozen_keywords:
-                key += '_'
+                key += "_"
             self.__data[key] = value
 
     @property
@@ -44,7 +44,7 @@ class FrozenJSON:
                 raise AttributeError
 
     def __str__(self):
-        return f'FrozenJSON with keys: {list(self.__data.keys())}'
+        return f"FrozenJSON with keys: {list(self.__data.keys())}"
 
     def __repr__(self):
-        return f'FrozenJSON with items: {list(self.__data.items())}'
+        return f"FrozenJSON with items: {list(self.__data.items())}"

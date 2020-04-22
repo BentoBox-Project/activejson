@@ -21,7 +21,7 @@ def frozen_nested_data():
 
 def test_has_keys(frozen_oscon_feed):
     frozen_keys = frozen_oscon_feed.Schedule.keys()
-    assert list(frozen_keys) == ['conferences', 'events', 'speakers', 'venues']
+    assert list(frozen_keys) == ["conferences", "events", "speakers", "venues"]
 
 
 def test_keyword_handling(frozen_dict_with_keywords):
@@ -35,17 +35,17 @@ def test_raises_exception(frozen_oscon_feed):
 
 
 def test_contains_funcionality(frozen_oscon_feed):
-    assert 'Schedule' in frozen_oscon_feed
+    assert "Schedule" in frozen_oscon_feed
 
 
 def test_getitem_getattr(frozen_oscon_feed):
-    oscon_keys = frozen_oscon_feed['Schedule'].keys()
+    oscon_keys = frozen_oscon_feed["Schedule"].keys()
     assert frozen_oscon_feed.Schedule.keys() == oscon_keys
 
 
 def test_remove_nested_data(frozen_nested_data):
-    frozen_nested_data.get('main_data').pop('simple_key')
-    assert 'simple_key' not in frozen_nested_data.get('main_data')
+    frozen_nested_data.get("main_data").pop("simple_key")
+    assert "simple_key" not in frozen_nested_data.get("main_data")
 
 
 def test_retrieve_underlying_json(frozen_oscon_feed):
