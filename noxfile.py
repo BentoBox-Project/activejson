@@ -28,6 +28,14 @@ def black(session):
     session.run("black", *args)
 
 
+@nox.session(python="3.8")
+def coverage(session):
+    """Upload coverage data."""
+    install_with_constraints(session, "coverage[toml]", "codecov")
+    session.run("coverage", "xml", "--fail-under=0")
+    session.run("codecov", *session.posargs)
+
+
 @nox.session(python=["3.8", "3.7", "3.6"])
 def lint(session):
     args = session.posargs or locations
