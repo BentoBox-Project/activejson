@@ -1,7 +1,8 @@
 from itertools import chain, starmap
+from typing import Any, Tuple
 
 
-def flatten_json(dictionary):
+def flatten_json(dictionary: dict) -> dict:
     """Flatten a nested json file"""
 
     while True:
@@ -11,25 +12,25 @@ def flatten_json(dictionary):
     return dictionary
 
 
-def _atomic_values(dictionary):
+def _atomic_values(dictionary: dict) -> bool:
     return not _nested_dict(dictionary) and not _nested_list(dictionary)
 
 
-def _process_dict_values(parent_key, key, value):
+def _process_dict_values(parent_key: str, key, value: str):
     temp1 = parent_key + "_" + key
     return temp1, value
 
 
-def _proccess_list(parent_key, i, value):
+def _proccess_list(parent_key, i, value) -> Tuple[str, Any]:
     temp2 = parent_key + "_" + str(i)
     return temp2, value
 
 
-def _nested_dict(dictionary):
+def _nested_dict(dictionary: dict) -> bool:
     return any(isinstance(value, dict) for value in dictionary.values())
 
 
-def _nested_list(dictionary):
+def _nested_list(dictionary: dict) -> bool:
     return any(isinstance(value, list) for value in dictionary.values())
 
 
