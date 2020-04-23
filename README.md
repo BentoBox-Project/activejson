@@ -2,8 +2,7 @@
 
 [![PyPI version](https://badge.fury.io/py/activejson.svg)](https://badge.fury.io/py/activejson)
 [![Tests](https://github.com/BentoBox-Project/activejson/workflows/Tests/badge.svg)](https://github.com/BentoBox-Project/activejson/actions?workflow=Tests)
-
-
+[![Codecov](https://codecov.io/gh/BentoBox-Project/activejson/branch/master/graph/badge.svg)](https://codecov.io/gh/BentoBox-Project/activejson)
 
 > A convenient library to deal with large json data
 
