@@ -32,6 +32,7 @@ flake8-import-order = "^0.18.1"
 safety = "^1.8.7"
 codecov = "^2.0.22"
 mypy = "^0.770"
+pytype = {version = "^2020.4.1", python = "3.7"}
 
 [tool.coverage.paths]
 source = ["src", "*/site-packages"]
