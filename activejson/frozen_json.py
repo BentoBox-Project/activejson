@@ -22,7 +22,7 @@ class FrozenJSON:
             self.__data[key] = value
 
     @property
-    def json(self):
+    def json(self) -> dict:
         return self.__data
 
     def __contains__(self, key):
@@ -43,8 +43,8 @@ class FrozenJSON:
             except KeyError:
                 raise AttributeError
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"FrozenJSON with keys: {list(self.__data.keys())}"
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"FrozenJSON with items: {list(self.__data.items())}"
