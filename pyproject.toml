@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "activejson"
-version = "0.3.0"
+version = "0.4.0"
 description = "A convenient library to deal with large json data"
 authors = ["Daniel Omar Vergara Pérez <daniel.omar.vergara@gmail.com>"]
 license  = "MIT"

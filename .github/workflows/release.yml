@@ -1,0 +1,36 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release_test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.8'
+        architecture: x64
+    - run: pip install nox==2019.11.9
+    - run: pip install poetry==1.0.5
+    - run: nox
+    - run: poetry build
+    - run: poetry config repositories.testpypi https://test.pypi.org/legacy
+    - run: poetry publish -r testpypi --username=${{ secrets.PYPI_USERNAME }} --password=${{ secrets.PYPI_PASSWORD }}
+
+  release:
+    runs-on: ubuntu-latest
+    needs: release_test
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v1
+      with:
+        python-version: '3.8'
+        architecture: x64
+    - run: pip install nox==2019.11.9
+    - run: pip install poetry==1.0.5
+    - run: nox
+    - run: poetry build
+    - run: poetry publish --username=${{ secrets.PYPI_USERNAME }} --password=${{ secrets.PYPI_PASSWORD }}
