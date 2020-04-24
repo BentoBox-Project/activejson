@@ -31,12 +31,15 @@ $ python3 setup.py install
 You can flat a complex dict the next way:
 
 ```python
-complex_json = {'cat': {'grass': 'feline', 'mud': 'you never know',
-                        'horse': 'my joke'},
-                'dolphin': [{'tiger': [{'bird': 'blue jay'},
-                                      {'fish': 'dolphin'}]},
-                            {'cat2': 'feline'}, {'dog2': 'canine'}],
-                'dog': 'canine'}
+complex_json = {
+    'cat': {'grass': 'feline', 'mud': 'you never know', 'horse': 'my joke'},
+    'dolphin': [
+        {'tiger': [{'bird': 'blue jay'}, {'fish': 'dolphin'}]},
+        {'cat2': 'feline'},
+       {'dog2': 'canine'}
+  ],
+  'dog': 'canine'
+}
 ```
 
 ```python
@@ -50,14 +53,16 @@ print(flatten_complex_json)
 The result could be the next:
 
 ```sh
-{'cat_grass': 'feline',
- 'cat_horse': 'my joke',
- 'cat_mud': 'you never know',
- 'dog': 'canine',
- 'dolphin_0_tiger_0_bird': 'blue jay',
- 'dolphin_0_tiger_1_fish': 'dolphin',
- 'dolphin_1_cat2': 'feline',
- 'dolphin_2_dog2': 'canine'}
+{
+    'cat_grass': 'feline',
+    'cat_horse': 'my joke',
+    'cat_mud': 'you never know',
+    'dog': 'canine',
+    'dolphin_0_tiger_0_bird': 'blue jay',
+    'dolphin_0_tiger_1_fish': 'dolphin',
+    'dolphin_1_cat2': 'feline',
+    'dolphin_2_dog2': 'canine'
+}
 ```
 
 On the other hand, is possible to convert that dict into an object with dynamic attributes:
@@ -87,43 +92,52 @@ frozen_complex_json.json
 ```
 
 ```sh
-{'cat_grass': 'feline',
- 'cat_horse': 'my joke',
- 'cat_mud': 'you never know',
- 'dog': 'canine',
- 'dolphin_0_tiger_0_bird': 'blue jay',
- 'dolphin_0_tiger_1_fish': 'dolphin',
- 'dolphin_1_cat2': 'feline',
- 'dolphin_2_dog2': 'canine'}
+{
+    'cat_grass': 'feline',
+    'cat_horse': 'my joke',
+    'cat_mud': 'you never know',
+    'dog': 'canine',
+    'dolphin_0_tiger_0_bird': 'blue jay',
+    'dolphin_0_tiger_1_fish': 'dolphin',
+    'dolphin_1_cat2': 'feline',
+    'dolphin_2_dog2': 'canine'
+}
 ```
 
 # Development setup
 
-This project uses _pipenv_ for dependecy resolution. It's a kind of mix between
+This project uses __Poetry__ for dependecy resolution. It's a kind of mix between
 pip and virtualenv. Follow the next instructions to setup the development enviroment.
+
+
+```sh
+$ pip install poetry
+```
+
 
 ```sh
 $ git clone https://github.com/dany2691/activejson.git
 $ cd activejson
-$ pipenv shell
-$ pipenv install -e .
+$ poetry install
 ```
 
 To run the test-suite, inside the pybundler directory:
 
 ```shell
-$ pytest test/ -vv
+$ poetry run pytest test/ -vv
 ```
 
 ## Meta
 
-Daniel Omar Vergara Pérez – [@dan1_net](https://twitter.com/dan1_net) – daniel.omar.vergara@gmail.com
+Daniel Omar Vergara Pérez – [@__danvergara __](https://twitter.com/__danvergara__) – daniel.omar.vergara@gmail.com -- [github.com/danvergara](https://github.com/danvergara)
 
-[https://github.com/dany2691](https://github.com/dany2691)
+Valery Briz - [@valerybriz](https://twitter.com/valerybriz) -- [github.com/valerybriz](https://github.com/valerybriz)
+
+
 
 ## Contributing
 
-1. Fork it (<https://github.com/dany2691/activejson>)
+1. Fork it (<https://github.com/BentoBox-Project/activejson>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
